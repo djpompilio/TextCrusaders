@@ -1,0 +1,15 @@
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+eclipse.project.name = appName + '-core'
+
+dependencies {
+  api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+  api "com.badlogicgames.gdx:gdx:$gdxVersion"
+  implementation 'edu.stanford.nlp:stanford-corenlp:4.5.5'
+  implementation "edu.stanford.nlp:stanford-corenlp:4.5.5:models"
+  implementation "edu.stanford.nlp:stanford-corenlp:4.5.5:models-english"
+  implementation "edu.stanford.nlp:stanford-corenlp:4.5.5:models-english-kbp"
+
+  if(enableGraalNative == 'true') {
+    implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
+  }
+}
