@@ -1,4 +1,6 @@
-# Text_Crusaders
+# Text Crusaders
+
+<img width="1392" height="860" alt="Screenshot 2025-07-26 at 10 38 44 AM" src="https://github.com/user-attachments/assets/8cf2e64c-1ce0-4a87-9909-1e0f552b1870" />
 
 A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
 
