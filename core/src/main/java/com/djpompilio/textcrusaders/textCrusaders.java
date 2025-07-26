@@ -94,6 +94,10 @@ public class textCrusaders extends ApplicationAdapter {
     private int lucSliHist = 0;
     private Cursor cursor;
     private float csVol = 0.5f;
+    private String cmdHelp = new String("Help");
+    private String cmdExit = new String("Exit");
+    private String cmdSave;
+    private String cmdLoad;
 
 
 
@@ -139,7 +143,7 @@ public class textCrusaders extends ApplicationAdapter {
 
 
         //    ----Story Log Window----
-        TextArea sLogText = new TextArea("Welcome to Text Crusaders!\n\nVer. " + getVersion() + "\n\n\n           Ready to start\n            your journey?\n\n\ntesting... ;) -- testingfdghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhbbbbbbbbbbbbbbbbbbbbbbbfffffffffffffffffffffffffaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbcccccccccccccccccdddddddddddddddeeeeeeeeeeeeeeeeeeffffffffffffffffggggggggggggggggggggggggggghhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkklllllllllllll \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n test", skin);
+        TextArea sLogText = new TextArea("Welcome to Text Crusaders!\n\nVer. " + getVersion() + "\n\n\n           Ready to start\n            your journey?\n\n\ntesting... ;)\n", skin);
         sLogText.setPrefRows(25);
         sLogText.setDisabled(true);
 
@@ -587,24 +591,35 @@ public class textCrusaders extends ApplicationAdapter {
             public boolean keyDown(InputEvent event, int keycode) {
                 if (keycode == Input.Keys.ENTER) {
                     setCurrentCmd(commandText.getText());
-                    sLogText.appendText(getCurrentCmd() + "\n");
-                    sLogText.setPrefRows(sLogText.getLines());
-                    //System.out.println(sLogText.getLines());
+                    sLogText.appendText(">" + getCurrentCmd() + "\n");
                     commandText.setText("");
-                    sLogScroll.invalidate();
-                    sLogScroll.setScrollPercentY(100);
+                    setCurrentCmd(getCurrentCmd().toLowerCase());
 
                     switch (getCurrentCmd()) {
-                        case "Help":
+                        case "help":
+                            sLogText.appendText("Text Crusaders Help\n\nList of common commands and their functions:\nHelp - Pulls up this dialogue\nExit - Exits the game.\nSave - Saves the current game.\nLoad - Loads a saved game.\n add more to this... \n");
                             System.out.println("help");
                             break;
                         case "exit":
+                            sLogText.appendText("Exit Not Implemented Yet!\n");
                             System.out.println("exit");
+                            break;
+                        case "save":
+                            sLogText.appendText("Save Not Implemented Yet!\n");
+                            System.out.println("save");
+                            break;
+                        case "load":
+                            sLogText.appendText("Load Not Implemented Yet!\n");
+                            System.out.println("load");
                             break;
                         default:
                             System.out.println("send to corenlp");
                     }
-
+                    sLogText.setPrefRows(Math.max(sLogText.getLines(), 25));
+                    sLogText.invalidate();
+                    sLogScroll.invalidate();
+                    sLogScroll.setScrollPercentY(100);
+                    setCurrentCmd(null);
                 }
                 return true;
             }
